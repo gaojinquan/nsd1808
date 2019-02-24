@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mybootcss</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div id="linux-carousel" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li class="active" data-target="#linux-carousel" data-slide-to="0"></li>
+                <li data-target="#linux-carousel" data-slide-to="1"></li>
+                <li data-target="#linux-carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <a href="http://www.sogou.com" target="_blank">
+                        <img src="static/imgs/first.jpg">
+                    </a>
+                </div>
+                <div class="item">
+                    <img src="static/imgs/second.jpg">
+                </div>
+                <div class="item">
+                    <img src="static/imgs/third.jpg">
+                </div>
+            </div>
+            <a href="#linux-carousel" data-slide="prev" class="carousel-control left">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a href="#linux-carousel" data-slide="next" class="carousel-control right">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+</div>
+
+
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#linux" data-toggle="tab">linux</a></li>
+        <li><a href="#python" data-toggle="tab">python</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active fade in" id="linux">linux linux</div>
+        <div class="tab-pane fade" id="python">python python</div>
+    </div>
+</div>
+
+
+<div class="container">
+    <ul class="nav nav-pills nav-justified">
+        <li class="active"><a href="#">network</a></li>
+        <li><a href="#">linux</a></li>
+        <li><a href="#">python</a></li>
+        <li><a href="#">html</a></li>
+        <li><a href="#">css</a></li>
+    </ul>
+    <hr>
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#">network</a></li>
+                <li><a href="#">linux</a></li>
+                <li><a href="#">python</a></li>
+                <li><a href="#">html</a></li>
+                <li><a href="#">css</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">999999</div>
+    </div>
+</div>
+
+
+<div class="btn-toolbar">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default">左</button>
+        <button type="button" class="btn btn-default">中</button>
+        <button type="button" class="btn btn-default">右</button>
+    </div>
+</div>
+
+
+<div class="dropdown">
+    <!--data-toggle需要js-->
+    <button class="btn btn-default" data-toggle="dropdown">
+        下拉菜单
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li><a href="#">linux</a></li>
+        <li><a href="#">network</a></li>
+        <li class="divider"></li>
+        <li><a href="#">python</a></li>
+        <li><a href="#">css+div</a></li>
+    </ul>
+</div>
+
+
+<script src="static/js/jquery.min.js"></script>  <!--jquery必须在上-->
+<script src="static/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $('#linux-carousel').carousel({
+        interval : 3000
+    });
+</script>
+</body>
+</html>

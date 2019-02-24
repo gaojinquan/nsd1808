@@ -1,0 +1,41 @@
+<domain type='kvm'>
+  <name>node</name>  #虚拟机名
+  <memory unit='KB'>2097152</memory>  #虚拟机最大内存
+  <currentMemory unit='KB'>2097152</currentMemory>  #虚拟机的独立内存(=最大内存)
+  <vcpu placement='static'>2</vcpu>  #虚拟几核CPU
+  <os>  #定义系统特征
+    <type arch='x86_64' machine='pc'>hvm</type>  #64位
+    <boot dev='hd'/>  #默认硬盘启动
+    <bootmenu enable='yes'/>  #引导菜单
+    <bios useserial='yes'/>  #使用bios串口(支持virsh console)
+  </os>
+  <features>  #电源管理
+    <acpi/>
+    <apic/>
+  </features>
+  <cpu mode='host-passthrough'></cpu>  #CPU的虚拟化(等于系统CPU)
+  <clock offset='localtime'/>  #使用真机时间
+  <on_poweroff>destroy</on_poweroff>  #图形界面下:poweroff按钮执行的命令
+  <on_reboot>restart</on_reboot>
+  <on_crash>restart</on_crash>
+  <devices>  #硬件系统设备
+    <emulator>/usr/libexec/qemu-kvm</emulator>  #指定硬件仿真程序
+    <disk type='file' device='disk'>  #定义硬盘
+      <driver name='qemu' type='qcow2'/>
+      <source file='/var/lib/libvirt/images/node.img'/>
+      <target dev='vda' bus='virtio'/>  #进入系统后的设备名称、使用virtio系统总线
+    </disk>
+    <interface type='bridge'>
+      <source bridge='vbr'/>  #网卡连接的虚拟交换机
+      <model type='virtio'/>
+    </interface>
+    <channel type='unix'>  
+      <target type='virtio' name='org.qemu.guest_agent.0'/>  #libvirt对虚拟机的管理驱动(qemu-ga)
+    </channel>
+    <serial type='pty'></serial>  #终端
+    <console type='pty'>
+      <target type='serial'/>  #终端的串口驱动
+    </console>
+    <memballoon model='virtio'></memballoon>  #内存气泡的驱动程序
+  </devices>
+</domain>
